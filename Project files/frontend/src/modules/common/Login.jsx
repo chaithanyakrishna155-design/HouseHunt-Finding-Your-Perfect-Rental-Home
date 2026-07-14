@@ -95,44 +95,72 @@ const Login = () => {
     <>
       {/* Navbar */}
 
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container fluid>
-          <Navbar.Brand>
-            <h2>HomeSphere</h2>
-          </Navbar.Brand>
+      {/* ================= NAVBAR ================= */}
 
-          <Navbar.Toggle aria-controls="navbarScroll" />
+<Navbar
+  expand="lg"
+  className="navbar shadow-lg"
+  sticky="top"
+>
+  <Container fluid>
 
-          <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto"></Nav>
+    <Navbar.Brand>
+      <h2
+        style={{
+          color: "white",
+          fontWeight: "700",
+          marginBottom: 0
+        }}
+      >
+        🏠 HomeSphere
+      </h2>
+    </Navbar.Brand>
 
-            <Nav className="align-items-center">
+    <Navbar.Toggle aria-controls="navbarScroll" />
 
-              <button
-                onClick={() =>
-                  setTheme(theme === "light" ? "dark" : "light")
-                }
-                style={{
-                  border: "none",
-                  background: "transparent",
-                  fontSize: "24px",
-                  marginRight: "20px",
-                  cursor: "pointer",
-                }}
-              >
-                {theme === "light" ? "🌙" : "☀️"}
-              </button>
+    <Navbar.Collapse id="navbarScroll">
 
-              <Link to="/">Home</Link>
+      <Nav className="me-auto"></Nav>
 
-              <Link to="/login">Login</Link>
+      <Nav
+        className="align-items-center"
+        style={{
+          gap: "28px"
+        }}
+      >
 
-              <Link to="/register">Register</Link>
+        <button
+          onClick={() =>
+            setTheme(theme === "light" ? "dark" : "light")
+          }
+          style={{
+            border: "none",
+            background: "transparent",
+            fontSize: "24px",
+            cursor: "pointer"
+          }}
+        >
+          {theme === "light" ? "🌙" : "☀️"}
+        </button>
 
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+        <Link className="nav-link-custom" to="/">
+          Home
+        </Link>
+
+        <Link className="nav-link-custom" to="/login">
+          Login
+        </Link>
+
+        <Link className="nav-link-custom" to="/register">
+          Register
+        </Link>
+
+      </Nav>
+
+    </Navbar.Collapse>
+
+  </Container>
+</Navbar>
 
       {/* Login Form */}
 

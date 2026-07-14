@@ -33,19 +33,34 @@ const OwnerHome = () => {
   if (!user) return null;
 
   return (
-    <div>
+    <div
+      style={{
+        background: theme === "dark" ? "#111827" : "#f4f7fb",
+        minHeight: "100vh"
+      }}
+    >
 
-      {/* Navbar */}
+      {/* NAVBAR */}
 
       <Navbar
         expand="lg"
-        className={theme === "dark" ? "navbar-dark bg-dark" : "bg-body-tertiary"}
+        style={{
+          background:
+            "linear-gradient(90deg,#2563eb,#4f46e5)",
+          boxShadow: "0 6px 18px rgba(0,0,0,.15)"
+        }}
       >
         <Container fluid>
 
           <Navbar.Brand>
-            <h2 style={{ color: theme === "dark" ? "white" : "black" }}>
-              HomeSphere
+            <h2
+              style={{
+                color: "white",
+                marginBottom: 0,
+                fontWeight: "700"
+              }}
+            >
+              🏠 HomeSphere
             </h2>
           </Navbar.Brand>
 
@@ -55,28 +70,34 @@ const OwnerHome = () => {
 
             <Nav className="me-auto"></Nav>
 
-            <Nav className="align-items-center">
+            <Nav
+              className="align-items-center"
+              style={{ gap: "18px" }}
+            >
 
               <button
                 onClick={() =>
-                  setTheme(theme === "light" ? "dark" : "light")
+                  setTheme(
+                    theme === "light"
+                      ? "dark"
+                      : "light"
+                  )
                 }
                 style={{
                   border: "none",
                   background: "transparent",
                   fontSize: "24px",
-                  cursor: "pointer",
-                  marginRight: "20px"
+                  cursor: "pointer"
                 }}
               >
                 {theme === "light" ? "🌙" : "☀️"}
               </button>
 
               <h5
-                className="mx-3"
                 style={{
-                  color: theme === "dark" ? "white" : "black",
-                  marginBottom: 0
+                  color: "white",
+                  marginBottom: 0,
+                  fontWeight: "600"
                 }}
               >
                 Hi {user.userData.name}
@@ -86,10 +107,12 @@ const OwnerHome = () => {
                 to="/"
                 onClick={handleLogOut}
                 style={{
-                  color: theme === "dark" ? "white" : "black"
+                  color: "white",
+                  textDecoration: "none",
+                  fontWeight: "600"
                 }}
               >
-                Log Out
+                Logout
               </Link>
 
             </Nav>
@@ -99,70 +122,113 @@ const OwnerHome = () => {
         </Container>
       </Navbar>
 
-      {/* Body */}
+      {/* BODY */}
 
       <Container fluid>
 
         <Row>
 
-          {/* Sidebar */}
+          {/* SIDEBAR */}
 
           <Col
             md={2}
             style={{
               minHeight: "100vh",
-              paddingTop: "1rem",
+              padding: "25px 15px",
               background:
                 theme === "dark"
-                  ? "#1e1e1e"
-                  : "#f8f9fa"
+                  ? "#1f2937"
+                  : "linear-gradient(180deg,#2563eb,#4f46e5)"
             }}
           >
 
             <Button
-              variant={theme === "dark" ? "secondary" : "light"}
-              className="w-100 mb-2"
+              className="w-100 mb-3"
               onClick={() => setTab("add")}
+              style={{
+                borderRadius: "12px",
+                border: "none",
+                background: "white",
+                color: "#2563eb",
+                fontWeight: "600",
+                padding: "12px"
+              }}
             >
-              Add Property
+              ➕ Add Property
             </Button>
 
             <Button
-              variant={theme === "dark" ? "secondary" : "light"}
-              className="w-100 mb-2"
+              className="w-100 mb-3"
               onClick={() => setTab("properties")}
+              style={{
+                borderRadius: "12px",
+                border: "none",
+                background: "white",
+                color: "#2563eb",
+                fontWeight: "600",
+                padding: "12px"
+              }}
             >
-              All Properties
+              🏠 All Properties
             </Button>
 
             <Button
-              variant={theme === "dark" ? "secondary" : "light"}
-              className="w-100 mb-2"
+              className="w-100 mb-3"
               onClick={() => setTab("bookings")}
+              style={{
+                borderRadius: "12px",
+                border: "none",
+                background: "white",
+                color: "#2563eb",
+                fontWeight: "600",
+                padding: "12px"
+              }}
             >
-              All Bookings
+              📅 Bookings
             </Button>
 
             <Button
-              variant={theme === "dark" ? "secondary" : "light"}
-              className="w-100 mb-2"
+              className="w-100 mb-3"
               onClick={() => setTab("transactions")}
+              style={{
+                borderRadius: "12px",
+                border: "none",
+                background: "white",
+                color: "#2563eb",
+                fontWeight: "600",
+                padding: "12px"
+              }}
             >
-              Transactions
+              💳 Transactions
+            </Button>
+
+            <Button
+              className="w-100 mt-5"
+              onClick={handleLogOut}
+              style={{
+                borderRadius: "12px",
+                border: "none",
+                background: "#ef4444",
+                color: "white",
+                fontWeight: "600",
+                padding: "12px"
+              }}
+            >
+              Logout
             </Button>
 
           </Col>
 
-          {/* Main Content */}
+          {/* MAIN CONTENT */}
 
           <Col
             md={10}
             style={{
-              padding: "2rem",
+              padding: "35px",
               background:
                 theme === "dark"
-                  ? "#121212"
-                  : "white",
+                  ? "#111827"
+                  : "#f4f7fb",
               color:
                 theme === "dark"
                   ? "white"
@@ -171,17 +237,32 @@ const OwnerHome = () => {
             }}
           >
 
-            {tab === "add" && <AddProperty />}
+            <div
+              style={{
+                background:
+                  theme === "dark"
+                    ? "#1f2937"
+                    : "white",
+                borderRadius: "18px",
+                padding: "25px",
+                boxShadow:
+                  "0 10px 25px rgba(0,0,0,.10)"
+              }}
+            >
 
-            {tab === "properties" && <AllProperties />}
+              {tab === "add" && <AddProperty />}
 
-            {tab === "bookings" && <AllBookings />}
+              {tab === "properties" && <AllProperties />}
 
-            {tab === "transactions" && (
-              <TransactionHistory
-                userId={user.userData._id}
-              />
-            )}
+              {tab === "bookings" && <AllBookings />}
+
+              {tab === "transactions" && (
+                <TransactionHistory
+                  userId={user.userData._id}
+                />
+              )}
+
+            </div>
 
           </Col>
 

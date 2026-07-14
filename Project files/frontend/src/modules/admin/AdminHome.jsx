@@ -11,7 +11,7 @@ const AdminHome = () => {
   const user = useContext(UserContext);
 
   const [activeComponent, setActiveComponent] = useState("users");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
@@ -40,86 +40,152 @@ const AdminHome = () => {
     <div
       style={{
         display: "flex",
-        background: theme === "dark" ? "#121212" : "#ffffff",
-        color: theme === "dark" ? "white" : "black",
-        minHeight: "100vh"
+        minHeight: "100vh",
+        background:
+          theme === "dark"
+            ? "#111827"
+            : "linear-gradient(135deg,#eef2ff,#dbeafe,#f8fbff)"
       }}
     >
       {/* Sidebar */}
 
       <div
         style={{
-          width: sidebarOpen ? "220px" : "65px",
-          background: theme === "dark" ? "#1e1e1e" : "#f5f5f5",
-          transition: "0.3s",
+          width: sidebarOpen ? "250px" : "70px",
+          background:
+            theme === "dark"
+              ? "linear-gradient(180deg,#1e3a8a,#312e81)"
+              : "linear-gradient(180deg,#2563eb,#4f46e5)",
+          transition: ".3s",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          minHeight: "100vh"
+          minHeight: "100vh",
+          color: "white",
+          boxShadow: "5px 0 20px rgba(0,0,0,.15)"
         }}
       >
         <div>
+
           <div
-            style={{
-              padding: "15px",
-              cursor: "pointer",
-              color: theme === "dark" ? "white" : "black"
-            }}
             onClick={toggleSidebar}
+            style={{
+              padding: "20px",
+              cursor: "pointer",
+              textAlign: sidebarOpen ? "right" : "center"
+            }}
           >
             <FaBars size={24} />
           </div>
 
           {sidebarOpen && (
-            <div style={{ padding: "15px" }}>
-              <h4>Dashboard</h4>
+            <div style={{ padding: "20px" }}>
+
+              <h3
+                style={{
+                  textAlign: "center",
+                  marginBottom: "35px",
+                  fontWeight: "700"
+                }}
+              >
+                HomeSphere
+              </h3>
 
               <ul style={{ listStyle: "none", padding: 0 }}>
 
                 <li
-                  style={{ margin: "15px 0", cursor: "pointer" }}
                   onClick={() => setActiveComponent("users")}
+                  style={{
+                    padding: "14px",
+                    borderRadius: "12px",
+                    marginBottom: "15px",
+                    cursor: "pointer",
+                    background:
+                      activeComponent === "users"
+                        ? "#ffffff"
+                        : "rgba(255,255,255,.15)",
+                    color:
+                      activeComponent === "users"
+                        ? "#2563eb"
+                        : "#fff",
+                    fontWeight: "600"
+                  }}
                 >
-                  All Users
+                  👥 All Users
                 </li>
 
                 <li
-                  style={{ margin: "15px 0", cursor: "pointer" }}
                   onClick={() => setActiveComponent("properties")}
+                  style={{
+                    padding: "14px",
+                    borderRadius: "12px",
+                    marginBottom: "15px",
+                    cursor: "pointer",
+                    background:
+                      activeComponent === "properties"
+                        ? "#ffffff"
+                        : "rgba(255,255,255,.15)",
+                    color:
+                      activeComponent === "properties"
+                        ? "#2563eb"
+                        : "#fff",
+                    fontWeight: "600"
+                  }}
                 >
-                  All Properties
+                  🏠 All Properties
                 </li>
 
                 <li
-                  style={{ margin: "15px 0", cursor: "pointer" }}
                   onClick={() => setActiveComponent("bookings")}
+                  style={{
+                    padding: "14px",
+                    borderRadius: "12px",
+                    cursor: "pointer",
+                    background:
+                      activeComponent === "bookings"
+                        ? "#ffffff"
+                        : "rgba(255,255,255,.15)",
+                    color:
+                      activeComponent === "bookings"
+                        ? "#2563eb"
+                        : "#fff",
+                    fontWeight: "600"
+                  }}
                 >
-                  All Bookings
+                  📅 All Bookings
                 </li>
 
               </ul>
+
             </div>
           )}
+
         </div>
 
         {sidebarOpen && (
+
           <div style={{ padding: "20px" }}>
+
             <button
               onClick={handleLogOut}
               style={{
                 width: "100%",
-                padding: "10px",
+                padding: "12px",
                 border: "none",
-                borderRadius: "6px",
-                background: "#dc3545",
+                borderRadius: "12px",
+                background: "#ef4444",
                 color: "white",
+                fontWeight: "600",
                 cursor: "pointer"
               }}
             >
               Logout
             </button>
+
           </div>
+
         )}
+
       </div>
 
       {/* Main Content */}
@@ -133,22 +199,32 @@ const AdminHome = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: "18px 25px",
-            background: theme === "dark" ? "#1e1e1e" : "#ffffff",
-            borderBottom:
+            padding: "20px 35px",
+            background:
               theme === "dark"
-                ? "1px solid #333"
-                : "1px solid #ddd"
+                ? "#1f2937"
+                : "#ffffff",
+            boxShadow: "0 3px 15px rgba(0,0,0,.08)"
           }}
         >
-          <h2>HomeSphere</h2>
+
+          <h2
+            style={{
+              color: "#2563eb",
+              fontWeight: "700"
+            }}
+          >
+            Admin Dashboard
+          </h2>
 
           <div
             style={{
               display: "flex",
-              alignItems: "center"
+              alignItems: "center",
+              gap: "20px"
             }}
           >
+
             <button
               onClick={() =>
                 setTheme(theme === "light" ? "dark" : "light")
@@ -156,9 +232,8 @@ const AdminHome = () => {
               style={{
                 border: "none",
                 background: "transparent",
-                fontSize: "24px",
-                cursor: "pointer",
-                marginRight: "20px"
+                fontSize: "26px",
+                cursor: "pointer"
               }}
             >
               {theme === "light" ? "🌙" : "☀️"}
@@ -168,34 +243,41 @@ const AdminHome = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "8px",
-                fontWeight: "bold"
+                gap: "10px",
+                fontWeight: "600",
+                color: theme === "dark" ? "#fff" : "#333"
               }}
             >
-              Hi Admin {user.userData.name}
-
-              <i className="far fa-user"></i>
+              👤 Hi Admin {user.userData.name}
             </span>
+
           </div>
+
         </div>
 
-        {/* Components */}
+        {/* Dynamic Content */}
 
         <div
           style={{
-            padding: "20px",
-            background: theme === "dark" ? "#121212" : "white",
-            minHeight: "90vh"
+            padding: "35px",
+            minHeight: "90vh",
+            background:
+              theme === "dark"
+                ? "#111827"
+                : "transparent"
           }}
         >
+
           {activeComponent === "users" && <AllUsers />}
 
           {activeComponent === "properties" && <AllProperty />}
 
           {activeComponent === "bookings" && <AllBookings />}
+
         </div>
 
       </div>
+
     </div>
   );
 };

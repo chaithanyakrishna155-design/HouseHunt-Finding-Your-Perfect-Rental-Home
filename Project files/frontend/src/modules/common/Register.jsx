@@ -106,50 +106,72 @@ const Register = () => {
 
       {/* Navbar */}
 
-      <Navbar expand="lg" className="bg-body-tertiary">
+      {/* ================= NAVBAR ================= */}
 
-        <Container fluid>
+<Navbar
+  expand="lg"
+  className="navbar shadow-lg"
+  sticky="top"
+>
+  <Container fluid>
 
-          <Navbar.Brand>
-            <h2>HomeSphere</h2>
-          </Navbar.Brand>
+    <Navbar.Brand>
+      <h2
+        style={{
+          color: "white",
+          fontWeight: "700",
+          marginBottom: 0
+        }}
+      >
+        🏠 HomeSphere
+      </h2>
+    </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="navbarScroll" />
+    <Navbar.Toggle aria-controls="navbarScroll" />
 
-          <Navbar.Collapse id="navbarScroll">
+    <Navbar.Collapse id="navbarScroll">
 
-            <Nav className="me-auto"></Nav>
+      <Nav className="me-auto"></Nav>
 
-            <Nav className="align-items-center">
+      <Nav
+        className="align-items-center"
+        style={{
+          gap: "28px"
+        }}
+      >
 
-              <button
-                onClick={() =>
-                  setTheme(theme === "light" ? "dark" : "light")
-                }
-                style={{
-                  border: "none",
-                  background: "transparent",
-                  fontSize: "24px",
-                  cursor: "pointer",
-                  marginRight: "20px"
-                }}
-              >
-                {theme === "light" ? "🌙" : "☀️"}
-              </button>
+        <button
+          onClick={() =>
+            setTheme(theme === "light" ? "dark" : "light")
+          }
+          style={{
+            border: "none",
+            background: "transparent",
+            fontSize: "24px",
+            cursor: "pointer"
+          }}
+        >
+          {theme === "light" ? "🌙" : "☀️"}
+        </button>
 
-              <Link to="/">Home</Link>
+        <Link className="nav-link-custom" to="/">
+          Home
+        </Link>
 
-              <Link to="/login">Login</Link>
+        <Link className="nav-link-custom" to="/login">
+          Login
+        </Link>
 
-              <Link to="/register">Register</Link>
+        <Link className="nav-link-custom" to="/register">
+          Register
+        </Link>
 
-            </Nav>
+      </Nav>
 
-          </Navbar.Collapse>
+    </Navbar.Collapse>
 
-        </Container>
-
-      </Navbar>
+  </Container>
+</Navbar>
 
       {/* Register Form */}
 
